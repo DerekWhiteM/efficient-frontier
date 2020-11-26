@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/DerekWhiteM/efficient-frontier/issues"
   },
-  "homepage": "https://github.com/DerekWhiteM/efficient-frontier#readme"
+  "homepage": "https://github.com/DerekWhiteM/efficient-frontier#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
 }
