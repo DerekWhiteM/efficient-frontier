@@ -7,7 +7,7 @@ const Login = () => {
     const [password, setPassword] = useState('')
 
     const handleSubmit = (e) => {
-        fetch('../../../server/routes/account/signin', {
+        fetch('/account/signin', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
