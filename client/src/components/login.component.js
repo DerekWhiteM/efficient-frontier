@@ -7,7 +7,7 @@ const Login = () => {
     const [password, setPassword] = useState('')
 
     const handleSubmit = (e) => {
-        fetch('http://localhost:5000/account/signin', {
+        fetch('../../../server/routes/account/signin', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -27,7 +27,7 @@ const Login = () => {
     }
 
     const handleGuest = () => {
-        fetch('http://localhost:5000/account/guest', { method: 'GET' })
+        fetch('/account/guest', { method: 'GET' })
             .then(res => {
                 return res.json()
             })
