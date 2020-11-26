@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {getFromStorage, setInStorage} from '../storage.js'
+import axios from 'axios'
 
 const Login = () => {
 
@@ -7,14 +8,15 @@ const Login = () => {
     const [password, setPassword] = useState('')
 
     const handleSubmit = (e) => {
-        fetch('/account/signin', {
+        /*fetch('/account/signin', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 username: username,
                 password: password,
             })
-        })
+        })*/
+        axios.post('/account/signin')
         .then(res => { return res.json() })
         .then(res => {
             setInStorage('token', res.token)
