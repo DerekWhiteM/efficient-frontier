@@ -19,6 +19,7 @@
   "homepage": "https://github.com/DerekWhiteM/efficient-frontier#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "mongoose": "^5.10.16"
+    "mongoose": "^5.10.16",
+    "node-fetch": "^2.6.1"
   }
 }
