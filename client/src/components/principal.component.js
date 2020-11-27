@@ -23,7 +23,7 @@ export default class Principal extends Component {
         // if principal already set, update it, else make a new one
         console.log(this.state.set)
         if (this.state.set) {
-            fetch('http://localhost:5000/principal/update', {
+            fetch('/principal/update', {
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body: JSON.stringify({
@@ -35,7 +35,7 @@ export default class Principal extends Component {
                 window.location = "/"
             })
         } else {
-            fetch('http://localhost:5000/principal/add', {
+            fetch('/principal/add', {
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body: JSON.stringify({
@@ -50,7 +50,7 @@ export default class Principal extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/principal?user_id=' + getFromStorage('user'), {
+        fetch('/principal?user_id=' + getFromStorage('user'), {
             method: 'GET'
         })
         .then(res => {

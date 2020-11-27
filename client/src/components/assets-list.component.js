@@ -24,10 +24,10 @@ const AssetsList = () => {
   const [isLoading,     setIsLoading] = useState(true)
   
   useEffect(() => {
-    axios.get('http://localhost:5000/account/info?userId=' + getFromStorage('user'))
+    axios.get('/account/info?userId=' + getFromStorage('user'))
     .then(res => {
       let userAssets = res.data.assets
-      axios.post('http://localhost:5000/assets/get', userAssets)
+      axios.post('/assets/get', userAssets)
       .then(response => {
         setAssets(response.data.assets)
         setOtherAssets(response.data.otherAssets)
@@ -52,7 +52,7 @@ const AssetsList = () => {
     setOtherAssets(newOtherAssets)
     const newAssets = assets.filter(el => el._id !== id)
     setAssets( newAssets )
-    axios.post('http://localhost:5000/account/assets', { assets: newAssets, userId: getFromStorage('user') })
+    axios.post('/account/assets', { assets: newAssets, userId: getFromStorage('user') })
   }
 
   const assetList = () => {

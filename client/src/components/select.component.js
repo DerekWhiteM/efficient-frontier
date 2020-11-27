@@ -10,7 +10,7 @@ const Select = props => {
       assetsCopy.push(props.otherAssets[selected])
       props.setAssets(assetsCopy)
       props.otherAssets.splice(selected, 1)
-      axios.post('http://localhost:5000/account/assets', { assets: assetsCopy, userId: getFromStorage('user') })
+      axios.post('/account/assets', { assets: assetsCopy, userId: getFromStorage('user') })
     }
   
     const AssetOptions = () => {

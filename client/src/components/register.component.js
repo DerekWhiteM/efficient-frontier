@@ -7,7 +7,7 @@ const Register = () => {
     const [password, setPassword] = useState('')
 
     const handleSubmit = () => {
-        fetch('http://localhost:5000/account/register', {
+        fetch('/account/register', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -19,7 +19,7 @@ const Register = () => {
             return res.json()
         })
         .then(res => {
-            fetch('http://localhost:5000/account/signin', {
+            fetch('/account/signin', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

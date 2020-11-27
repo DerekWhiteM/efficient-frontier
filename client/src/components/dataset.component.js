@@ -51,7 +51,7 @@ const Dataset = (props) => {
     }
 
     useEffect(() => {
-      fetch('http://localhost:5000/portfolio', {
+      fetch('/portfolio', {
         method: 'post',
         body: JSON.stringify({
           assets: props.assets

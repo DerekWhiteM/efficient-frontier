@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     const storedToken = getFromStorage('token')
     if (storedToken) {
-      fetch('http://localhost:5000/account/verify?token=' + storedToken, { method: 'GET' })
+      fetch('/account/verify?token=' + storedToken, { method: 'GET' })
       .then(res => res.json())
       .then(res => { if (res.success) {setIsLoading(false)} })
     }

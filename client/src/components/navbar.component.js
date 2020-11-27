@@ -5,7 +5,7 @@ import { getFromStorage, setInStorage } from '../storage'
 const Navbar = () => {
 
   const logout = () => {
-    fetch('http://localhost:5000/account/logout', {
+    fetch('/account/logout', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -22,7 +22,7 @@ const Navbar = () => {
   }
 
   const deleteAccount = () => {
-    fetch('http://localhost:5000/account/delete', {
+    fetch('/account/delete', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

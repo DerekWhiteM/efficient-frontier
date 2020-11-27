@@ -25,7 +25,7 @@ export default class IncomeList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/income/')
+    axios.get('/income/')
       .then(response => {
         this.setState({ incomes: response.data })
       })
@@ -35,7 +35,7 @@ export default class IncomeList extends Component {
   }
 
   deleteIncome(id) {
-    axios.delete('http://localhost:5000/income/'+id)
+    axios.delete('/income/'+id)
       .then(response => { console.log(response.data)})
 
     this.setState({
