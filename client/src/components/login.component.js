@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import {getFromStorage, setInStorage} from '../storage.js'
-import axios from 'axios'
 
 const Login = () => {
 
@@ -49,7 +49,7 @@ const Login = () => {
             <input style={{display: "block", marginLeft: "auto", marginRight: "auto"}} type="password" placeholder="Password" name="password" value={password} onChange={e => setPassword(e.target.value)}/><br/>
             <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} className="btn btn-secondary" onClick={handleSubmit}>Submit</button><br/>
             <p style={{textAlign: "center"}}>Don't have an account?<br/>
-                <a href="/register">Sign up</a> or continue as&nbsp;
+                <Link to="/register" className="nav-link">Sign Up</Link> or continue as&nbsp;
                 <a href="/#" onClick={handleGuest}>Guest</a>
             </p>
         </div>
