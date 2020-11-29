@@ -17,10 +17,12 @@ const getPrices = () => {
             })
             .then(res => res.json())
             .then(res => {
-                // Save prices
-                assets[i].prices = res[ticker].close
-                console.log(assets[i].prices)
-                assets[i].save()
+                if (res.ok) {
+                    assets[i].prices = res[ticker].close
+                    assets[i].save()
+                } else {
+                    console.log(res.statusText)
+                }
             })
             .catch(err => {
                 console.log(err)
