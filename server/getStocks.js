@@ -17,7 +17,7 @@ const getPrices = () => {
             })
             .then(res => res.json())
             .then(res => {
-                if (res.ok) {
+                if (res[ticker]) {
                     assets[i].prices = res[ticker].close
                     assets[i].save()
                 } else {
