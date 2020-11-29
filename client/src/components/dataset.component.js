@@ -7,10 +7,8 @@ const Dataset = (props) => {
     const [myChart, setMyChart] = useState()
 
     const data = {
-      labels: ['Scatter'],
       datasets: [
         {
-          label: 'My First dataset',
           fill: false,
           backgroundColor: 'rgba(75,192,192,0.4)',
           pointBorderColor: 'rgba(75,192,192,1)',
@@ -28,6 +26,23 @@ const Dataset = (props) => {
     }
     
     const options = {
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Return'
+          }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Standard Deviation'
+          }
+        }]
+      },
       tooltips: {
         position: 'nearest',
         callbacks: {
@@ -40,7 +55,7 @@ const Dataset = (props) => {
               }
               return holdings
           },
-          label: () => {}
+          //label: () => {}
         }
       }
     }
