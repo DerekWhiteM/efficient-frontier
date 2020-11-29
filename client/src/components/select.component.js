@@ -7,10 +7,12 @@ const Select = props => {
     const selectAsset = () => { 
       const selected = document.getElementById("assets").selectedIndex
       const assetsCopy = [...props.assets]
-      assetsCopy.push(props.otherAssets[selected])
-      props.setAssets(assetsCopy)
-      props.otherAssets.splice(selected, 1)
-      axios.post('/account/assets', { assets: assetsCopy, userId: getFromStorage('user') })
+      if (props.otherAssets[selected]) { 
+        assetsCopy.push(props.otherAssets[selected])
+        props.setAssets(assetsCopy)
+        props.otherAssets.splice(selected, 1)
+        axios.post('/account/assets', { assets: assetsCopy, userId: getFromStorage('user') }) 
+      }
     }
   
     const AssetOptions = () => {
