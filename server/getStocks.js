@@ -30,7 +30,7 @@ const getPrices = () => {
 }
 
 const getStocks = () => {
-    let numDays = 30
+    let numDays = 1
     let interval = numDays * 86400000
     getPrices()
     setInterval(getPrices, interval)
