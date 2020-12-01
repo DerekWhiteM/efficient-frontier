@@ -2,6 +2,7 @@
 
 let Asset = require('./models/asset.model')
 const fetch = require('node-fetch')
+require('dotenv').config()
 
 const getPrices = () => {
     Asset.find({})
@@ -11,7 +12,7 @@ const getPrices = () => {
             let url = `https://yahoo-finance-low-latency.p.rapidapi.com/v8/finance/spark?symbols=${ticker}&interval=1mo&range=5y`
             fetch(url, {
                 headers: {
-                    'x-rapidapi-key': '167deac947mshe187dd44a1f25dfp1786eejsndd55ff6025e5',
+                    'x-rapidapi-key': process.env.RAPID_API_KEY,
                     'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
                 }
             })
