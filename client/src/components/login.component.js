@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {getFromStorage, setInStorage} from '../storage.js'
 
-const Login = () => {
+const Login = (setIsLoading) => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -23,22 +23,18 @@ const Login = () => {
             console.log('Login: ' + getFromStorage('user'))
             setInStorage('username', username)
             console.log(res)
-            window.location = "/"
+            setIsLoading(false)
         })
     }
 
     const handleGuest = () => {
         fetch('/account/guest', { method: 'GET' })
-            .then(res => {
-                return res.json()
-            })
+            .then(res => { return res.json() })
             .then(res => {
                 setInStorage('token', res.token)
                 setInStorage('user', res.user)
                 setInStorage('guest', true)
-                setTimeout(() => {
-                    window.location = "/"
-                }, 1000)
+                setIsLoading(false)
             })   
     }
 

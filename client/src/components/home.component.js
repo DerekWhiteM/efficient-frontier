@@ -15,7 +15,7 @@ const Home = () => {
   }, [])
   return (
     isLoading ? 
-      <div id="login"><Login /></div> 
+      <div id="login"><Login setIsLoading={setIsLoading}/></div> 
       : 
       <div>
         <AssetList />

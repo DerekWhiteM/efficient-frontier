@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import {setInStorage} from '../storage.js'
 
 const Register = () => {
@@ -47,7 +48,7 @@ const Register = () => {
             <input style={{display: "block", marginLeft: "auto", marginRight: "auto", marginBottom: "3px"}} type="text" placeholder="Username" name="username" value={username} onChange={e => setUsername(e.target.value)}/>
             <input style={{display: "block", marginLeft: "auto", marginRight: "auto"}} type="password" placeholder="Password" name="password" value={password} onChange={e => setPassword(e.target.value)}/><br/>
             <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} className="btn btn-secondary" onClick={handleSubmit}>Submit</button><br/>
-            <p style={{textAlign: "center"}}>Already have an account? <a href="/login">Log in</a></p>
+            <p style={{textAlign: "center"}}>Already have an account? <Link to="/login" className="nav-link">Log in</Link></p>
         </div>
     )
     
