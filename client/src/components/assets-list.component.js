@@ -11,7 +11,7 @@ const Asset = props => {
       <td>{props.asset.name}</td>
       <td>{props.asset.ticker}</td>
       <td>
-        <button onClick={() => { props.deleteAsset(props.asset._id) }}>delete</button>
+        <a href="/#" onClick={() => { props.deleteAsset(props.asset._id) }}>delete</a>
       </td>
     </tr>
   )
@@ -68,22 +68,20 @@ const AssetsList = () => {
   } else {
     return (
       <div className="container">
-        <div style={{textAlign: 'right', marginBottom: '25px', marginRight: '8px'}}>
-          <Select otherAssets={otherAssets} assets={assets} setAssets={setAssets}/>
-        </div>
         <table className="table">
           <thead>
             <tr>
               <th>Asset Class</th>
               <th>Name</th>
               <th>Ticker</th>
-              <th></th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             { assetList() }
           </tbody>
         </table>
+        <Select otherAssets={otherAssets} assets={assets} setAssets={setAssets}/>
         <Dataset assets={assets}/>
       </div>
     )

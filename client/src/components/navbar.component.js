@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { getFromStorage, setInStorage } from '../storage'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
-const Navbar = () => {
+const Navigation = () => {
 
   const logout = () => {
     fetch('/account/logout', {
@@ -35,7 +38,7 @@ const Navbar = () => {
     })
   }
 
-  return (
+  /*return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
       <div className="container" style={{position: 'relative'}}>
         <Link to="/" className="navbar-brand">Portfolio Builder</Link>
@@ -55,8 +58,34 @@ const Navbar = () => {
         </ul>
       </div>
     </nav>
+  )*/
+
+  return (
+    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar.Brand href="/">Portfolio Builder</Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
+      <Nav className="ml-auto">
+        <NavDropdown title="Account" id="basic-nav-dropdown">
+          <NavDropdown.Item 
+            onClick={
+              () => {
+                if (getFromStorage('guest')) {
+                  setInStorage('guest', false)
+                  deleteAccount()
+                } else { logout() }
+              }
+            }
+            >Logout
+          </NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="#action/3.4">Delete</NavDropdown.Item>
+        </NavDropdown>
+      </Nav>
+    </Navbar.Collapse>
+    </Navbar>
   )
   
 }
 
-export default Navbar
+export default Navigation

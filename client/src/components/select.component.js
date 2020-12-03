@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { getFromStorage } from '../storage.js'
+import { authorize } from 'passport'
 
 const Select = props => {
 
@@ -24,9 +25,9 @@ const Select = props => {
     }
   
     return (
-      <div>
-        <button style={{marginRight: '5px'}} onClick={() => { selectAsset() }}>Add</button>
+      <div style={{width: '100%', textAlign: 'right'}}>
         <AssetOptions/>
+        <button style={{marginTop: '-20px', marginBottom: '20px', marginLeft: '4.5%', marginRight: '10.5%'}} onClick={() => { selectAsset() }}>Add</button>
       </div>
     )
   
