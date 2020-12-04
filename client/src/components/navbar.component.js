@@ -79,7 +79,7 @@ const Navigation = () => {
             >Logout
           </NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">Delete</NavDropdown.Item>
+          <NavDropdown.Item onClick={deleteAccount}>Delete</NavDropdown.Item>
         </NavDropdown>
       </Nav>
     </Navbar.Collapse>
