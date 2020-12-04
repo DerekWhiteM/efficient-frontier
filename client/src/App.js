@@ -13,8 +13,6 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navigation />
-        <br/>
         <Route path="/" exact component={Home} />
         <Route path="/dataset" component={Dataset} />
         <Route path="/login" component={Login} />

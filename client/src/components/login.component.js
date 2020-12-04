@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {getFromStorage, setInStorage} from '../storage.js'
 
-const Login = (setIsLoading) => {
+const Login = (props) => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -22,8 +22,8 @@ const Login = (setIsLoading) => {
             setInStorage('user', res.user)
             console.log('Login: ' + getFromStorage('user'))
             setInStorage('username', username)
+            props.login()
             console.log(res)
-            setIsLoading(false)
         })
     }
 
@@ -34,7 +34,7 @@ const Login = (setIsLoading) => {
                 setInStorage('token', res.token)
                 setInStorage('user', res.user)
                 setInStorage('guest', true)
-                setIsLoading(false)
+                props.login()
             })   
     }
 

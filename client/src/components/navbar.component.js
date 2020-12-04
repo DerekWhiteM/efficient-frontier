@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
-const Navigation = () => {
+const Navigation = (props) => {
 
   const logout = () => {
     fetch('/account/logout', {
@@ -20,7 +20,7 @@ const Navigation = () => {
       if (res.isGuest === true) {
         deleteAccount()
       }
-      window.location = "/"
+      props.logout()
     })
   }
 
