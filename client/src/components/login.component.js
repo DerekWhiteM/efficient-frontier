@@ -18,12 +18,14 @@ const Login = (props) => {
         })
         .then(res => { return res.json() })
         .then(res => {
-            setInStorage('token', res.token)
-            setInStorage('user', res.user)
-            console.log('Login: ' + getFromStorage('user'))
-            setInStorage('username', username)
-            props.login()
-            console.log(res)
+            if (res.success == true) {
+                setInStorage('token', res.token)
+                setInStorage('user', res.user)
+                setInStorage('username', username)
+                props.login()
+            } else {
+                console.log('Login failed')
+            }
         })
     }
 

@@ -103,18 +103,18 @@ router.route('/signin').post((req, res) => {
             newUserSession.userId = user._id
             newUserSession.save()
                 .then(doc => res.json({
-                    message: 'signed in',
+                    success: true,
                     user: newUserSession.userId,
                     token: doc._id
                 }))
                 .catch(err => res.status(400).json('Error: ' + err))
         } else if (user && !user.validPassword(password)) {
-            console.log('Invalid password at login')
+            res.json({ success: false })
             return
         }
 
-    });
-});
+    })
+})
 
 // Verify Request
 router.route('/verify').get((req, res) => {
