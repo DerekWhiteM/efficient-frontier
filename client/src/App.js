@@ -1,24 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { getFromStorage } from './storage'
 
 import Navigation from './components/navbar.component'
-import Home from './components/home.component'
+import AssetsList from './components/assets-list.component'
 import Login from './components/login.component'
-import Register from './components/register.component'
-import Dataset from './components/dataset.component'
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true)
+  useEffect(() => {
+    const storedToken = getFromStorage('token')
+    if (storedToken) {
+      fetch('/account/verify?token=' + storedToken, { method: 'GET' })
+      .then(res => res.json())
+      .then(res => { if (res.success) {setIsLoading(false)} })
+    }
+  }, [])
   return (
-    <Router>
-      <div>
-        <Route path="/" exact component={Home} />
-        <Route path="/dataset" component={Dataset} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-      </div>
-    </Router>
+    <div>
+      <Navigation logout={() => setIsLoading(true)}/>
+      <br />
+      { isLoading ? <Login login={ () => setIsLoading(false)} /> : <AssetsList /> }
+    </div>
   )
 }
 

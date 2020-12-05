@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import { getFromStorage } from '../storage.js'
-import { authorize } from 'passport'
 
 const Select = props => {
 
