@@ -2,7 +2,7 @@
   "name": "efficient-portfolio",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://efficient-portfolio.herokuapp.com/",
+  "proxy": "https://efficient-portfolio.herokuapp.com",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",

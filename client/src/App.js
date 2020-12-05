@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     const storedToken = getFromStorage('token')
     if (storedToken) {
-      fetch('/account/verify?token=' + storedToken, { method: 'GET' })
+      fetch('https://efficient-portfolio.herokuapp.com/account/verify?token=' + storedToken, { method: 'GET' })
       .then(res => res.json())
       .then(res => { if (res.success) {setIsLoading(false)} })
     }

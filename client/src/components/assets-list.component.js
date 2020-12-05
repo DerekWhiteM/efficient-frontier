@@ -24,7 +24,7 @@ const AssetsList = () => {
   const [isLoading,     setIsLoading] = useState(true)
   
   useEffect(() => {
-    axios.get('/account/info?userId=' + getFromStorage('user'))
+    axios.get('https://efficient-portfolio.herokuapp.com/account/info?userId=' + getFromStorage('user'))
     .then(res => {
       let userAssets = res.data.assets
       axios.post('/assets/get', userAssets)
@@ -52,7 +52,7 @@ const AssetsList = () => {
     setOtherAssets(newOtherAssets)
     const newAssets = assets.filter(el => el._id !== id)
     setAssets( newAssets )
-    axios.post('/account/assets', { assets: newAssets, userId: getFromStorage('user') })
+    axios.post('https://efficient-portfolio.herokuapp.com/account/assets', { assets: newAssets, userId: getFromStorage('user') })
   }
 
   const assetList = () => {

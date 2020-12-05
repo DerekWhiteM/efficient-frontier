@@ -59,6 +59,7 @@ const Dataset = (props) => {
         }
       }
     }
+    
     var params = {
       type: 'scatter',
       data: data,
@@ -81,6 +82,7 @@ const Dataset = (props) => {
       if (myChart) {myChart.destroy()}
       let ctx = document.getElementById('myChart')     
       setMyChart(new Chart(ctx, params))
+      // eslint-disable-next-line
     }, [feasibleSet])
 
     return (

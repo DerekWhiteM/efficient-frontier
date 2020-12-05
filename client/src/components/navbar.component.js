@@ -7,7 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 const Navigation = (props) => {
 
   const logout = () => {
-    fetch('/account/logout', {
+    fetch('https://efficient-portfolio.herokuapp.com/account/logout', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -24,7 +24,7 @@ const Navigation = (props) => {
   }
 
   const deleteAccount = () => {
-    fetch('/account/delete', {
+    fetch('https://efficient-portfolio.herokuapp.com/account/delete', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
