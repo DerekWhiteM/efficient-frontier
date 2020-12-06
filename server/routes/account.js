@@ -31,9 +31,14 @@ router.route('/register').post((req, res) => {
                 if (err) {
                     console.log('Error on register')
                 } else {
-                    return res.json({
-                        success: true
-                    })  
+                    const newUserSession = new UserSession()
+                    newUserSession.userId = user._id
+                    newUserSession.save()
+                    .then(doc => res.json({
+                        success: true,
+                        user: newUserSession.userId,
+                        token: doc._id
+                    }))
                 }
             })
         }
