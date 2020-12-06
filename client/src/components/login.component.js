@@ -9,25 +9,47 @@ const Login = (props) => {
     const [signUp, setSignUp] = useState(false)
 
     const handleSubmit = (e) => {
-        fetch(host + '/account/signin', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                username: username,
-                password: password,
+        if (!signUp) {
+            fetch(host + '/account/signin', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                })
             })
-        })
-        .then(res => { return res.json() })
-        .then(res => {
-            if (res.success === true) {
-                setInStorage('token', res.token)
-                setInStorage('user', res.user)
-                setInStorage('username', username)
-                props.login()
-            } else {
-                console.log('Login failed')
-            }
-        })
+            .then(res => { return res.json() })
+            .then(res => {
+                if (res.success === true) {
+                    setInStorage('token', res.token)
+                    setInStorage('user', res.user)
+                    setInStorage('username', username)
+                    props.login()
+                } else {
+                    console.log('Login failed')
+                }
+            })
+        } else {
+            fetch(host + '/account/register', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                })
+            })
+            .then(res => { return res.json() })
+            .then(res => {
+                if (res.success === true) {
+                    setInStorage('token', res.token)
+                    setInStorage('user', res.user)
+                    setInStorage('username', username)
+                    props.login()
+                } else {
+                    console.log('Login failed')
+                }
+            })
+        }
     }
 
     const handleGuest = () => {
