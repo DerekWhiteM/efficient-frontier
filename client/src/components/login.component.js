@@ -8,9 +8,9 @@ const Login = (props) => {
     const [password, setPassword] = useState('')
     const [signUp, setSignUp] = useState(false)
 
-    const handleSubmit = (e) => {
-        if (!signUp) {
-            fetch(host + '/account/signin', {
+    const handleSubmit = (e) => {   
+        if (signUp) {
+            fetch(host + '/account/register', { 
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -20,17 +20,13 @@ const Login = (props) => {
             })
             .then(res => { return res.json() })
             .then(res => {
-                if (res.success === true) {
-                    setInStorage('token', res.token)
-                    setInStorage('user', res.user)
-                    setInStorage('username', username)
-                    props.login()
-                } else {
-                    console.log('Login failed')
-                }
+                setInStorage('token', res.token)
+                setInStorage('user', res.user)
+                setInStorage('guest', true)
+                props.login()
             })
         } else {
-            fetch(host + '/account/register', {
+            fetch(host + '/account/signin', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -54,13 +50,13 @@ const Login = (props) => {
 
     const handleGuest = () => {
         fetch(host + '/account/guest', { method: 'GET' })
-            .then(res => { return res.json() })
-            .then(res => {
-                setInStorage('token', res.token)
-                setInStorage('user', res.user)
-                setInStorage('guest', true)
-                props.login()
-            })   
+        .then(res => { return res.json() })
+        .then(res => {
+            setInStorage('token', res.token)
+            setInStorage('user', res.user)
+            setInStorage('guest', true)
+            props.login()
+        })   
     }
 
     return (
