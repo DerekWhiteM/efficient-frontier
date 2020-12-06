@@ -3,11 +3,12 @@ import { getFromStorage, setInStorage } from '../storage'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import host from '../host'
 
 const Navigation = (props) => {
 
   const logout = () => {
-    fetch('https://efficient-portfolio.herokuapp.com/account/logout', {
+    fetch(host + '/account/logout', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -24,7 +25,7 @@ const Navigation = (props) => {
   }
 
   const deleteAccount = () => {
-    fetch('https://efficient-portfolio.herokuapp.com/account/delete', {
+    fetch(host + '/account/delete', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

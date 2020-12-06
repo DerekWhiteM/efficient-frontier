@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { setInStorage } from '../storage.js'
+import host from '../host'
 
 const Login = (props) => {
 
@@ -8,7 +9,7 @@ const Login = (props) => {
     const [signUp, setSignUp] = useState(false)
 
     const handleSubmit = (e) => {
-        fetch('https://efficient-portfolio.herokuapp.com/account/signin', {
+        fetch(host + '/account/signin', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -30,7 +31,7 @@ const Login = (props) => {
     }
 
     const handleGuest = () => {
-        fetch('https://efficient-portfolio.herokuapp.com/account/guest', { method: 'GET' })
+        fetch(host + '/account/guest', { method: 'GET' })
             .then(res => { return res.json() })
             .then(res => {
                 setInStorage('token', res.token)

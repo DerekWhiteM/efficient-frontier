@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Chart from 'chart.js'
+import host from '../host'
 
 const Dataset = (props) => {
 
@@ -67,7 +68,7 @@ const Dataset = (props) => {
     }
 
     useEffect(() => {
-      fetch('/portfolio', {
+      fetch(host + '/portfolio', {
         method: 'post',
         body: JSON.stringify({
           assets: props.assets

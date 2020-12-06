@@ -3,6 +3,7 @@ import axios from 'axios'
 import { getFromStorage } from '../storage.js'
 import Select from '../components/select.component'
 import Dataset from '../components/dataset.component'
+import host from '../host'
 
 const Asset = props => {
   return (
@@ -24,10 +25,10 @@ const AssetsList = () => {
   const [isLoading,     setIsLoading] = useState(true)
   
   useEffect(() => {
-    axios.get('https://efficient-portfolio.herokuapp.com/account/info?userId=' + getFromStorage('user'))
+    axios.get(host + '/account/info?userId=' + getFromStorage('user'))
     .then(res => {
       let userAssets = res.data.assets
-      axios.post('/assets/get', userAssets)
+      axios.post(host + '/assets/get', userAssets)
       .then(response => {
         setAssets(response.data.assets)
         setOtherAssets(response.data.otherAssets)
@@ -52,7 +53,7 @@ const AssetsList = () => {
     setOtherAssets(newOtherAssets)
     const newAssets = assets.filter(el => el._id !== id)
     setAssets( newAssets )
-    axios.post('https://efficient-portfolio.herokuapp.com/account/assets', { assets: newAssets, userId: getFromStorage('user') })
+    axios.post(host + '/account/assets', { assets: newAssets, userId: getFromStorage('user') })
   }
 
   const assetList = () => {

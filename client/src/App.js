@@ -6,13 +6,15 @@ import { getFromStorage } from './storage'
 import Navigation from './components/navbar.component'
 import AssetsList from './components/assets-list.component'
 import Login from './components/login.component'
+import host from './host'
 
 const App = () => {
+  console.log(process.env.REACT_APP_DEVELOPMENT_SERVER)
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     const storedToken = getFromStorage('token')
     if (storedToken) {
-      fetch('https://efficient-portfolio.herokuapp.com/account/verify?token=' + storedToken, { method: 'GET' })
+      fetch(host + '/account/verify?token=' + storedToken, { method: 'GET' })
       .then(res => res.json())
       .then(res => { if (res.success) {setIsLoading(false)} })
     }
