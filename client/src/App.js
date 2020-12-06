@@ -9,7 +9,6 @@ import Login from './components/login.component'
 import host from './host'
 
 const App = () => {
-  console.log(process.env.REACT_APP_DEVELOPMENT_SERVER)
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     const storedToken = getFromStorage('token')
