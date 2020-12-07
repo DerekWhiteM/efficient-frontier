@@ -8,30 +8,21 @@ const Login = (props) => {
     const [password, setPassword] = useState('')
     const [signUp, setSignUp] = useState(false)
 
-    const title = () => {
-        if (signUp) { return 'Sign Up' } else { return 'Log In' }
-    }
+    const title = () => { if (signUp) { return 'Sign Up' } else { return 'Log In' } }
 
     const message = () => {
         const style = {textAlign: "center"}
-        if (signUp) {
-            return (
-                <p style={style}>
-                    Already have an account?
-                    <br />
-                    <a href="/#" onClick={() => { setSignUp(false) }}> Log In</a>
-                </p>
-            )
-        } else {
-            return (
-                <p style={style}>
-                    Don't have an account?
-                    <br/>
-                    <a href="/#" onClick={() => { setSignUp(true) }}>Sign Up </a> | <a href="/#" onClick={handleGuest}>Use Demo</a>
-                    <br/>
-                </p>
-            )
-        }
+        if (signUp) { return (
+            <p style={style}>
+                Already have an account?<br />
+                <a href="/#" onClick={() => { setSignUp(false) }}> Log In</a>
+            </p>
+        )} else { return (
+            <p style={style}>
+                Don't have an account?<br/>
+                <a href="/#" onClick={() => { setSignUp(true) }}>Sign Up </a> | <a href="/#" onClick={handleGuest}>Use Demo</a>
+            </p>
+        )}
     }
 
     const handleSubmit = () => {   
