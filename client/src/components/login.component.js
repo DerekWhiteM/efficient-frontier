@@ -9,11 +9,7 @@ const Login = (props) => {
     const [signUp, setSignUp] = useState(false)
 
     const title = () => {
-        if (signUp) {
-            return 'Sign Up'
-        } else {
-            return 'Log In'
-        }
+        if (signUp) { return 'Sign Up' } else { return 'Log In' }
     }
 
     const message = () => {
@@ -90,16 +86,14 @@ const Login = (props) => {
     }
 
     return (
-        <div>
-            <div className="inner-login">
-                <h1 style={{textAlign: "center"}}>{title()}</h1>
-                <br/>
-                <input style={{display: "block", marginLeft: "auto", marginRight: "auto", marginBottom: "3px"}} type="text" placeholder="Username" name="username" value={username} onChange={e => setUsername(e.target.value)}/>
-                <input style={{display: "block", marginLeft: "auto", marginRight: "auto"}} type="password" placeholder="Password" name="password" value={password} onChange={e => setPassword(e.target.value)}/><br/>
-                <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} className="btn btn-secondary" onClick={handleSubmit}>Submit</button><br/>
-                { message() }
-            </div>
-        </div>
+        <div className="inner-login">
+            <h1 style={{textAlign: "center"}}>{ title() }</h1>
+            <br/>
+            <input style={{display: "block", marginLeft: "auto", marginRight: "auto", marginBottom: "3px"}} type="text" placeholder="Username" name="username" value={username} onChange={e => setUsername(e.target.value)}/>
+            <input style={{display: "block", marginLeft: "auto", marginRight: "auto"}} type="password" placeholder="Password" name="password" value={password} onChange={e => setPassword(e.target.value)}/><br/>
+            <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} className="btn btn-secondary" onClick={handleSubmit}>Submit</button><br/>
+            { message() }
+        </div> 
     )
     
 }
