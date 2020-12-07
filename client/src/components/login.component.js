@@ -8,7 +8,37 @@ const Login = (props) => {
     const [password, setPassword] = useState('')
     const [signUp, setSignUp] = useState(false)
 
-    const handleSubmit = (e) => {   
+    const title = () => {
+        if (signUp) {
+            return 'Sign Up'
+        } else {
+            return 'Log In'
+        }
+    }
+
+    const message = () => {
+        const style = {textAlign: "center"}
+        if (signUp) {
+            return (
+                <p style={style}>
+                    Already have an account?
+                    <br />
+                    <a href="/#" onClick={() => { setSignUp(false) }}> Log In</a>
+                </p>
+            )
+        } else {
+            return (
+                <p style={style}>
+                    Don't have an account?
+                    <br/>
+                    <a href="/#" onClick={() => { setSignUp(true) }}>Sign Up </a> | <a href="/#" onClick={handleGuest}>Use Demo</a>
+                    <br/>
+                </p>
+            )
+        }
+    }
+
+    const handleSubmit = () => {   
         if (signUp) {
             fetch(host + '/account/register', { 
                 method: 'POST',
@@ -61,28 +91,14 @@ const Login = (props) => {
 
     return (
         <div>
-            { signUp ? 
-                <div className="inner-login">
-                    <h1 style={{textAlign: "center"}}>Sign up</h1><br/>
-                    <input style={{display: "block", marginLeft: "auto", marginRight: "auto", marginBottom: "3px"}} type="text" placeholder="Username" name="username" value={username} onChange={e => setUsername(e.target.value)}/>
-                    <input style={{display: "block", marginLeft: "auto", marginRight: "auto"}} type="password" placeholder="Password" name="password" value={password} onChange={e => setPassword(e.target.value)}/><br/>
-                    <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} className="btn btn-secondary" onClick={handleSubmit}>Submit</button><br/>
-                    <p style={{textAlign: "center"}}>
-                        Already have an account?
-                        <a href="/#" onClick={() => { setSignUp(false) }}> Log In</a>
-                    </p>
-                </div>
-                :
-                <div className="inner-login">
-                    <h1 style={{textAlign: "center"}}>Log in</h1><br/>
-                    <input style={{display: "block", marginLeft: "auto", marginRight: "auto", marginBottom: "3px"}} type="text" placeholder="Username" name="username" value={username} onChange={e => setUsername(e.target.value)}/>
-                    <input style={{display: "block", marginLeft: "auto", marginRight: "auto"}} type="password" placeholder="Password" name="password" value={password} onChange={e => setPassword(e.target.value)}/><br/>
-                    <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} className="btn btn-secondary" onClick={handleSubmit}>Submit</button><br/>
-                    <p style={{textAlign: "center"}}>Don't have an account?<br/>
-                        <a href="/#" onClick={() => { setSignUp(true) }}>Sign Up </a> | <a href="/#" onClick={handleGuest}>Use Demo</a><br/>
-                    </p>
-                </div>
-            }
+            <div className="inner-login">
+                <h1 style={{textAlign: "center"}}>{title()}</h1>
+                <br/>
+                <input style={{display: "block", marginLeft: "auto", marginRight: "auto", marginBottom: "3px"}} type="text" placeholder="Username" name="username" value={username} onChange={e => setUsername(e.target.value)}/>
+                <input style={{display: "block", marginLeft: "auto", marginRight: "auto"}} type="password" placeholder="Password" name="password" value={password} onChange={e => setPassword(e.target.value)}/><br/>
+                <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} className="btn btn-secondary" onClick={handleSubmit}>Submit</button><br/>
+                { message() }
+            </div>
         </div>
     )
     
