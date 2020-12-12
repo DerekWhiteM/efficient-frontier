@@ -25,7 +25,7 @@ router.route('/register').post((req, res) => {
         username: req.body.username
     }, (err, users) => {
         if (users[0]) {
-            console.log('Username already exists')
+            // username already exists
         } else {
             newUser.save((err, user) => {
                 if (err) {
@@ -52,7 +52,7 @@ router.route('/guest').get((req, res) => {
 
     newUser.save((err, user) => {
         if (err) {
-            console.log('Error on register')
+            // error
         } else {
             const newUserSession = new UserSession()
             newUserSession.userId = user._id
@@ -68,7 +68,6 @@ router.route('/guest').get((req, res) => {
 
 // Delete Account
 router.route('/delete').delete((req, res) => {
-    console.log(req.body.user_id)
     User.deleteOne({
         _id: req.body.user_id
     }, () => {
@@ -86,18 +85,13 @@ router.route('/signin').post((req, res) => {
 
     const username = req.body.username
     const password = req.body.password
-
-    if (!username || !password) {
-        console.log('Username or password not entered on login')
-        return
-    }
     
     User.find({
         username: username
     }, (err, users) => {
 
         if (err) {
-            console.log('Error: ', err)
+            // error
             return
         }
 
@@ -113,7 +107,7 @@ router.route('/signin').post((req, res) => {
                     token: doc._id
                 }))
                 .catch(err => res.status(400).json('Error: ' + err))
-        } else if (user && !user.validPassword(password)) {
+        } else {
             res.json({ success: false })
             return
         }
@@ -131,7 +125,7 @@ router.route('/verify').get((req, res) => {
             console.log(err)
         }
         if (!session) {
-            console.log('Not logged in')
+            // not logged in
         } else {
             return res.send({
                 message: 'Good',
@@ -163,8 +157,6 @@ router.route('/assets').post((req, res) => {
     for (let i = 0; i < assets.length; i++) {
         assets[i] = assets[i].ticker
     }
-
-    console.log(assets)
 
     User.findOneAndUpdate({ _id: userId }, { assets: assets })
         .then(() => { return res.end() })
