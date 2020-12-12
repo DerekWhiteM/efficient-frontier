@@ -26,15 +26,11 @@ connection.once('open', () => {
 })
 
 const assetsRouter = require('./routes/assets')
-const incomeRouter = require('./routes/income')
 const portfolioRouter = require('./routes/portfolio')
-const principalRouter = require('./routes/principal')
 const accountRouter = require('./routes/account')
 
 app.use('/assets', assetsRouter)
-app.use('/income', incomeRouter)
 app.use('/portfolio', portfolioRouter)
-app.use('/principal', principalRouter)
 app.use('/account', accountRouter)
 
 app.use(express.static(path.join(__dirname, '../client/build')))
