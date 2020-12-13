@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { getFromStorage } from '../storage.js'
 import host from '../host'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Select = props => {
 
@@ -21,13 +22,13 @@ const Select = props => {
       for (let i = 0; i < props.otherAssets.length; i++) {
         content.push(<option key={i}>{props.otherAssets[i].assetClass}</option>)
       }
-      return <select id="assets">{content}</select>
+      return <select class="form-select" id="assets">{content}</select>
     }
   
     return (
-      <div style={{width: '100%', textAlign: 'right'}}>
+      <div style={{textAlign: "center"}}>
         <AssetOptions/>
-        <button style={{marginTop: '-20px', marginBottom: '20px', marginLeft: '4.5%', marginRight: '10.5%'}} onClick={() => { selectAsset() }}>Add</button>
+        <button style={{marginLeft: "10px", marginBottom: "10px"}} onClick={() => { selectAsset() }}>Add</button>
       </div>
     )
   
