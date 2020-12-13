@@ -69,6 +69,7 @@ const AssetsList = () => {
   } else {
     return (
       <div className="container">
+        <Select otherAssets={otherAssets} assets={assets} setAssets={setAssets}/>
         <table className="table">
           <thead>
             <tr>
@@ -82,7 +83,6 @@ const AssetsList = () => {
             { assetList() }
           </tbody>
         </table>
-        <Select otherAssets={otherAssets} assets={assets} setAssets={setAssets}/>
         <Dataset assets={assets}/>
       </div>
     )

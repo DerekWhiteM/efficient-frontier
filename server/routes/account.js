@@ -1,7 +1,6 @@
 const router = require('express').Router()
 let User = require('../models/user.model')
 let UserSession = require('../models/user-session.model')
-const deleteUserData = require('../deleteUserData.js')
 
 
 // Get User Info
@@ -71,11 +70,9 @@ router.route('/delete').delete((req, res) => {
     User.deleteOne({
         _id: req.body.user_id
     }, () => {
-        deleteUserData(req.body.user_id).then(() => {
-            return res.send({
-                success: true,
-                message: "User deleted"
-            })
+        return res.send({
+            success: true,
+            message: "User deleted"
         })
     })
 })

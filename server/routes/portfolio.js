@@ -1,13 +1,9 @@
 const router = require('express').Router()
-var stocks = require('../stocks')
-var Correlation = require('node-correlation')
 var Finance = require( 'financejs' )
 var finance = new Finance()
 var ss = require('simple-statistics')
-let Asset = require('../models/asset.model')
 
 router.route('/').post((req, res) => {
-
 
   
   const stocks = req.body.assets
