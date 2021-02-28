@@ -1,7 +1,6 @@
 require('dotenv').config()
 
 const getAssetPrices = require('./getAssetPrices')
-const wakeUpDyno = require('./wakeUpDyno')
 const cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose')
@@ -12,8 +11,7 @@ const accountRouter = require('./routes/account')
 const path = require('path')
 const app = express()
 const port = process.env.PORT || 5001
-const DYNO_URL = 'https://efficient-portfolio.herokuapp.com/'
-const uri = process.env.ATLAS_URI
+const uri = process.env.ATLAS_URI_PORTFOLIO_APP
 const connection = mongoose.connection
 
 app.use(cors())
@@ -33,6 +31,5 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => {
     getAssetPrices()
-    wakeUpDyno(DYNO_URL)
     console.log(`Server is running on port: ${port}`)
 })
