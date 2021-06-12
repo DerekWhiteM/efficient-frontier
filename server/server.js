@@ -11,7 +11,7 @@ const accountRouter = require('./routes/account')
 const path = require('path')
 const app = express()
 const port = process.env.PORT || 5001
-const uri = process.env.ATLAS_URI_PORTFOLIO_APP
+const uri = process.env.ATLAS_URI
 const connection = mongoose.connection
 
 app.use(cors())
