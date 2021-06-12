@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/DerekWhiteM/efficient-frontier#readme",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.3",
@@ -29,7 +29,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "financejs": "^4.1.0",
-    "mongoose": "^5.10.16",
+    "mongoose": "^5.12.13",
     "node-correlation": "^1.0.2",
     "node-fetch": "^2.6.1",
     "passport": "^0.4.1",
