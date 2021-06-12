@@ -3,12 +3,11 @@ import { getFromStorage, setInStorage } from '../storage'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import host from '../host'
 
 const Navigation = (props) => {
 
   const logout = () => {
-    fetch(host + '/account/logout', {
+    fetch('/account/logout', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -25,7 +24,7 @@ const Navigation = (props) => {
   }
 
   const deleteAccount = () => {
-    fetch(host + '/account/delete', {
+    fetch('/account/delete', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

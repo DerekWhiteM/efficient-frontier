@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { setInStorage } from '../storage.js'
-import host from '../host'
 
 const Login = (props) => {
 
@@ -23,7 +22,7 @@ const Login = (props) => {
         )} else { return (
             <p style={style}>
                 Don't have an account?<br/>
-                <a href="/#" onClick={() => setSignUp(true)}>Sign Up </a> | <a href="/#" onClick={handleGuest}>Use Demo</a>
+                <a href="/#" onClick={() => setSignUp(true)}>Sign Up </a> | <a href="/#" onClick={() => handleGuest()}>Use Demo</a>
             </p>
         )}
     }
@@ -31,7 +30,7 @@ const Login = (props) => {
     const handleSubmit = () => {  
         setLoginFail(false) 
         if (signUp) {
-            fetch(host + '/account/register', { 
+            fetch('/account/register', { 
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -47,7 +46,7 @@ const Login = (props) => {
                 props.login()
             })
         } else {
-            fetch(host + '/account/signin', {
+            fetch('/account/signin', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -71,7 +70,7 @@ const Login = (props) => {
     }
 
     const handleGuest = () => {
-        fetch(host + '/account/guest', { method: 'GET' })
+        fetch('/account/guest', { method: 'GET' })
         .then(res => { return res.json() })
         .then(res => {
             setInStorage('token', res.token)
